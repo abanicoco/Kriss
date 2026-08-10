@@ -1,0 +1,587 @@
+/* ====== VARIABLES DE COLOR ====== */
+:root {
+    --morado-oscuro: #4A1A5E;
+    --morado-medio: #7B3FAF;
+    --morado-claro: #C9A8E8;
+    --crema: #FDF5E6;
+    --crema-oscuro: #F5E6D3;
+    --texto: #2D1B3D;
+    --dorado: #D4AF37;
+}
+
+/* ====== RESET Y GENERAL ====== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: var(--crema);
+    color: var(--texto);
+    overflow-x: hidden;
+}
+
+/* ====== SECCIÓN HERO ====== */
+.hero-section {
+    background: linear-gradient(135deg, var(--morado-oscuro) 0%, var(--morado-medio) 100%);
+    min-height: 100vh;
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de burbujas de fondo */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 40%, rgba(201, 168, 232, 0.1) 0%, transparent 50%);
+    animation: floatBubbles 20s infinite;
+}
+
+@keyframes floatBubbles {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(5%, 5%) rotate(5deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.nombre-titulo {
+    color: white;
+    text-shadow: 0 0 30px rgba(201, 168, 232, 0.3);
+    font-weight: 700;
+    min-height: 120px;
+}
+
+.subtitulo {
+    color: var(--morado-claro);
+    font-weight: 300;
+}
+
+/* ====== FOTO PRINCIPAL (soporte JPEG) ====== */
+.foto-container {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.foto-container:hover {
+    transform: scale(1.05);
+}
+
+.foto-hero {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border: 5px solid var(--dorado);
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    background-color: var(--crema);
+}
+
+.foto-hero[src$=".jpeg"],
+.foto-hero[src$=".jpg"] {
+    border-radius: 50%;
+}
+
+.overlay-foto {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(74, 26, 94, 0.6);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.foto-container:hover .overlay-foto {
+    opacity: 1;
+}
+
+.play-icon {
+    font-size: 4rem;
+    color: white;
+    filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5));
+    animation: pulseIcon 1.5s infinite;
+}
+
+@keyframes pulseIcon {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* ====== BADGES ====== */
+.bg-morado-claro {
+    background-color: var(--morado-claro);
+    color: var(--texto);
+}
+
+.bg-crema {
+    background-color: var(--crema-oscuro);
+    color: var(--texto);
+}
+
+/* ====== BIOGRAFÍA ====== */
+.biografia-section {
+    background-color: white;
+    padding: 4rem 0;
+}
+
+.biografia-card {
+    background: linear-gradient(145deg, #ffffff, var(--crema));
+    border-radius: 30px;
+    border-left: 8px solid var(--morado-medio);
+}
+
+.biografia-texto {
+    line-height: 1.8;
+}
+
+.text-morado {
+    color: var(--morado-medio);
+    font-weight: 600;
+}
+
+/* ====== BOTONES ====== */
+.btn-morado {
+    background: linear-gradient(135deg, var(--morado-medio), var(--morado-oscuro));
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(74, 26, 94, 0.3);
+}
+
+.btn-morado:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(74, 26, 94, 0.4);
+    color: white;
+}
+
+.btn-morado:active {
+    transform: scale(0.95);
+}
+
+/* ====== GALERÍA (POLAROID) ====== */
+.galeria-section {
+    background: var(--crema);
+}
+
+.polaroid {
+    background: white;
+    padding: 15px 15px 40px 15px;
+    border-radius: 5px;
+    transform: rotate(var(--rotation, 0deg));
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.polaroid:nth-child(1) { --rotation: -3deg; }
+.polaroid:nth-child(2) { --rotation: 2deg; }
+.polaroid:nth-child(3) { --rotation: -1deg; }
+
+.polaroid img {
+    border-radius: 5px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.polaroid-text {
+    text-align: center;
+    padding-top: 10px;
+    font-weight: 600;
+    color: var(--texto);
+}
+
+/* ====== LÍNEA DE TIEMPO ====== */
+.timeline-section {
+    background: white;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 40px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--morado-claro), var(--morado-medio));
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.6s ease;
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.timeline-icon {
+    position: absolute;
+    left: -33px;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background: var(--morado-medio);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: white;
+    box-shadow: 0 0 0 5px var(--crema);
+}
+
+.timeline-content {
+    background: var(--crema);
+    padding: 20px 25px;
+    border-radius: 15px;
+    border-left: 4px solid var(--morado-medio);
+}
+
+.timeline-content h5 {
+    color: var(--morado-oscuro);
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.timeline-content p {
+    margin-bottom: 0;
+}
+
+/* ====== FOOTER ====== */
+.footer-section {
+    background: linear-gradient(135deg, var(--morado-oscuro), var(--morado-medio));
+    color: white;
+}
+
+/* ====== ANIMACIONES ====== */
+.animate__animated {
+    animation-duration: 0.8s;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+    .nombre-titulo {
+        font-size: 3rem !important;
+        min-height: 80px;
+    }
+    
+    .foto-hero {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .biografia-card {
+        padding: 20px !important;
+    }
+    
+    .polaroid img {
+        height: 200px;
+    }
+    
+    .timeline {
+        padding-left: 30px;
+    }
+    
+    .timeline-icon {
+        width: 30px;
+        height: 30px;
+        left: -23px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .foto-hero {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .play-icon {
+        font-size: 3rem;
+    }
+}
+
+/* ====== FLORES ALREDEDOR DE LA FOTO (con imágenes reales) ====== */
+.foto-con-flores {
+    position: relative;
+    display: inline-block;
+    padding: 40px;
+}
+
+.flor {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    animation: flotarFlores 3s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    z-index: 2;
+    pointer-events: none;
+    user-select: none;
+    transition: transform 0.3s ease;
+}
+
+.flor:hover {
+    transform: scale(1.2) rotate(15deg);
+}
+
+.flor-1 { top: -20px; left: -20px; animation-delay: 0s; width: 70px; height: 70px; }
+.flor-2 { top: -30px; right: -20px; animation-delay: 0.5s; width: 65px; height: 65px; }
+.flor-3 { bottom: -20px; left: -15px; animation-delay: 1s; width: 70px; height: 70px; }
+.flor-4 { bottom: -30px; right: -15px; animation-delay: 1.5s; width: 65px; height: 65px; }
+.flor-5 { top: 25%; left: -45px; animation-delay: 0.3s; width: 55px; height: 55px; }
+.flor-6 { top: 25%; right: -45px; animation-delay: 0.8s; width: 55px; height: 55px; }
+.flor-7 { bottom: 25%; left: -45px; animation-delay: 1.3s; width: 55px; height: 55px; }
+.flor-8 { bottom: 25%; right: -45px; animation-delay: 1.8s; width: 55px; height: 55px; }
+
+@keyframes flotarFlores {
+    0%, 100% { 
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+    50% { 
+        transform: translateY(-15px) rotate(10deg) scale(1.05);
+    }
+}
+
+@media (max-width: 768px) {
+    .foto-con-flores {
+        padding: 30px;
+    }
+    
+    .flor {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .flor-1 { top: -10px; left: -10px; width: 50px; height: 50px; }
+    .flor-2 { top: -15px; right: -10px; width: 45px; height: 45px; }
+    .flor-3 { bottom: -10px; left: -10px; width: 50px; height: 50px; }
+    .flor-4 { bottom: -15px; right: -10px; width: 45px; height: 45px; }
+    .flor-5 { top: 20%; left: -30px; width: 40px; height: 40px; }
+    .flor-6 { top: 20%; right: -30px; width: 40px; height: 40px; }
+    .flor-7 { bottom: 20%; left: -30px; width: 40px; height: 40px; }
+    .flor-8 { bottom: 20%; right: -30px; width: 40px; height: 40px; }
+}
+
+@media (max-width: 576px) {
+    .foto-con-flores {
+        padding: 20px;
+    }
+    
+    .flor {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .flor-1 { top: -5px; left: -5px; width: 40px; height: 40px; }
+    .flor-2 { top: -10px; right: -5px; width: 35px; height: 35px; }
+    .flor-3 { bottom: -5px; left: -5px; width: 40px; height: 40px; }
+    .flor-4 { bottom: -10px; right: -5px; width: 35px; height: 35px; }
+    .flor-5 { display: none; }
+    .flor-6 { display: none; }
+    .flor-7 { display: none; }
+    .flor-8 { display: none; }
+}
+
+/* ====== MINI REPRODUCTOR DEBAJO DE LA FOTO ====== */
+.mini-player-wrapper {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.mini-player {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border-radius: 50px;
+    padding: 10px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.btn-player {
+    color: white;
+    background: transparent;
+    border: none;
+    padding: 0;
+    transition: transform 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-player:hover {
+    transform: scale(1.1);
+    color: var(--morado-claro);
+}
+
+.btn-player:active {
+    transform: scale(0.9);
+}
+
+.btn-player.playing {
+    color: var(--morado-claro);
+}
+
+/* Barra de progreso personalizada */
+.progress-bar-container {
+    min-width: 80px;
+    flex: 1;
+}
+
+.form-range {
+    height: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.form-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.form-range::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    background: var(--morado-claro);
+}
+
+.form-range::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    border: none;
+}
+
+/* Control de volumen */
+.volume-control {
+    min-width: 70px;
+}
+
+.volume-slider {
+    width: 50px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+}
+
+/* ====== RESPONSIVE DEL REPRODUCTOR ====== */
+@media (max-width: 768px) {
+    .mini-player {
+        border-radius: 30px;
+        padding: 8px 15px;
+    }
+    
+    .progress-bar-container {
+        min-width: 50px;
+    }
+    
+    .volume-control {
+        min-width: 50px;
+    }
+    
+    .volume-slider {
+        width: 35px;
+    }
+    
+    .btn-player {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .btn-player i {
+        font-size: 1.5rem !important;
+    }
+    
+    #songName {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .mini-player {
+        border-radius: 20px;
+        padding: 6px 10px;
+    }
+    
+    .progress-bar-container {
+        min-width: 35px;
+    }
+    
+    .volume-control {
+        min-width: 35px;
+    }
+    
+    .volume-slider {
+        width: 25px;
+    }
+    
+    .btn-player {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .btn-player i {
+        font-size: 1.2rem !important;
+    }
+    
+    #songName {
+        font-size: 0.6rem;
+    }
+}

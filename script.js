@@ -20,21 +20,22 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // ====== 2. DATOS RANDOM (MEMES) ======
     const datosRandom = [
-        "🍕 Puede comer pizza en menos de 5 minutos",
-        "☕ Tiene un posgrado en 'Tomar café sin dormir'",
-        "🎤 Canta en la ducha como si estuviera en un concierto",
-        "📺 Se sabe los diálogos de 'Friends' de memoria",
+        "🖤 Tiene más ropa negra que el armario de Nicky Jam",
+        "🌙 Su momento favorito es las 8 de la noche, ¿quien se acuesta a esa hora mano?",
+        "🎨 Dibuja cosas raras que solo ella entiende (y son arte)",
+        "📺 Se sabe los diálogos de 'Smilling Friends' de memoria",
         "😂 Se ríe hasta con memes malos",
-        "💤 Su superpoder es dormir en cualquier lugar",
-        "🧠 Es profesional en 'Overthinking'",
-        "🎮 Gana siempre en el Mario Kart (mentira, nunca gana)",
-        "🌮 Prefiere los tacos antes que una cita romántica",
+        "🍕 Puede comerse una Pollo entero entera mirando una película triste",
+        "🧠 Es profesional en 'valeverguismo'",
+        "😐 Su cara de 'todo bien' es su cara de 'estoy planeando algo'",
+        "🌮 Prefiere los POLLOS DEL ARA antes que una cita romántica",
         "✨ Es la persona más increíble que conozco",
         "🍦 Se come un Smirnoff de Tamarindo en 2 minutos",
         "🍵 Toma Matcha bajo la lluvia como en una película",
         "🎨 Dibuja vainas raras mk🙏",
         "🐔 Es experta en comer pollo de Ara",
         "🚶 Adicta al Roblox nivel dios"
+        
     ];
     
     const btnDato = document.getElementById('btnDatoRandom');
